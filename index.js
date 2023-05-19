@@ -14,6 +14,8 @@ const departamentos = document.getElementById("departamentos");
 const regiones = document.getElementById("regiones");
 const atracciones = document.getElementById("turismo");
 const presidentes = document.getElementById("presidentes");
+const mapa = document.getElementById("mapa");
+
 
 async function fetchData(urlApi) {
     const response = await fetch(urlApi, options);
@@ -106,3 +108,38 @@ async function fetchData(urlApi) {
         console.log("ERROR!: ", error)
     }
 })();
+
+(async () => {
+    try {
+      const endPointMap = 'https://api-colombia.com/api/v1/Map';
+      const response = await fetchData(endPointMap);
+      const datosMapa = response.map((item) => {
+        return `
+          <div class="imgContainer">
+            <img src="${item.urlImages}" alt="" class="imgMapa" />
+            <p>${item.name}</p>
+          </div>
+        `;
+      });
+      mapa.innerHTML = datosMapa.join("");
+  
+      const imgMapas = document.getElementsByClassName("imgMapa");
+      Array.from(imgMapas).forEach((imgMapa) => {
+        imgMapa.addEventListener("click", function () {
+          if (imgMapa.requestFullscreen) {
+            imgMapa.requestFullscreen();
+          } else if (imgMapa.mozRequestFullScreen) {
+            imgMapa.mozRequestFullScreen();
+          } else if (imgMapa.webkitRequestFullscreen) {
+            imgMapa.webkitRequestFullscreen();
+          } else if (imgMapa.msRequestFullscreen) {
+            imgMapa.msRequestFullscreen();
+          }
+        });
+      });
+    } catch (error) {
+      console.log("ERROR!: ", error);
+    }
+  })();
+  
+

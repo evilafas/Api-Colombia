@@ -80,6 +80,8 @@ section {
   transition: 0.5s;
 }
 
+
+
 #departamentos{
   padding-top: 10px;
   background-color: #F3F4F6;
@@ -230,3 +232,23 @@ width: 100%;
 #presidentes::-webkit-scrollbar-track {
   background-color: #f1f1f1; /* Color de fondo de la barra de desplazamiento */
 }
+
+#mapa{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.imgMapa{
+  width: 300px;
+  height: 300px;
+}
+
+.imgMapa:hover{
+  width: 310px;
+  height: 310px;
+  transition: 0.2s;
+}
+
