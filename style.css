@@ -12,6 +12,13 @@ body {
   
 
 }
+
+@media (max-width: 767px) {
+ .headermenu{
+  display: none;
+ }
+}
+
 .header {
   position: fixed;
   width: 100%;
